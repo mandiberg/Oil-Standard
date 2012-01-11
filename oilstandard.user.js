@@ -128,8 +128,12 @@ Set up the data retreivals to pull every hour, rather than every page load
 Add other currencies in addition to USD
 
 
-*/
 
+Find Sara's Jan 2012 comments with "//////	"
+
+
+
+*/
 
 (function () {
 
@@ -150,10 +154,18 @@ addGlobalStyle('body div#toolTip p em span { font-weight:bold;color:#fff; }');
 
 	getOnlyOil()
 	getOilPrices();
+	alert("Completed the Get Oil Prices function");
+	alert("The Oil Price has been set to:" + GM_getValue("barrelprice"));
+	
+	//////	from the two alerts above, I know that csv values are coming in and 
+	//////	being parsed out into variables.
 
 	getEachNews(0,3,'http://rss.news.yahoo.com/rss/energy');
 	getEachNews(1,3,'http://www.rigzone.com/news/rss/rigzone_latest.aspx');
 	getEachNews(2,3,'http://app.feeddigest.com/digest3/NGHRPHO7FS.rss');
+	
+	//////	Alerts are being generated to confirm that each of these three functions is running
+	//////	I think maybe only one or two are working, but it's not a problem for now
 
     const HundredsRegex = /\$\d\d?d?\,\d\d\d\.?\d?\d?\b/ig;
     const CurrencyRegex = /\$\d+\,?\d*\.?\d* ?.?i?l?l?i?o?n?\b/ig;
@@ -173,10 +185,12 @@ addGlobalStyle('body div#toolTip p em span { font-weight:bold;color:#fff; }');
    var xpath = "//text()[(parent::" + allowedParents.join(" or parent::") + ")" +
                                //" and contains(translate(., 'HTTP', 'http'), 'http')" +
                                "]";
-
    var candidates = document.evaluate(xpath, document, null, XPathResult.UNORDERED_NODE_SNAPSHOT_TYPE, null);
    var loopcounter = 0;
    for (var cand = null, i = 0; (cand = candidates.snapshotItem(i)); i++) {
+   			alert(candidates.snapshotLength);
+   		   //////	it seems like the document.evaluate method is working but
+   		   //////	that something's up with the way we're accesing the XPath result object?
 
        // Find and replace all instances of currency
        if (CurrencyRegex.test(cand.nodeValue)) {
@@ -304,6 +318,8 @@ function findAndReplace(type, match)
 addTooltip()
 
 })();
+alert("end main function");
+//////	As far as I know, the add-on is not making it through to this alert
 
 //end main function
 
@@ -445,7 +461,7 @@ GM_xmlhttpRequest({
     			alert('Please upgrade to the latest version of Greasemonkey.');
     			return;
 			} else {
-			//	alert(responsearray[4]);
+				//alert(responsearray[1]);
 				GM_setValue("barrelprice", responsearray[1]);
 				GM_setValue("changebarrel", responsearray[4]);
 				var rawratechange = responsearray[4].replace ("(", "");
@@ -466,7 +482,6 @@ GM_xmlhttpRequest({
     }
     
 });
-
 
 
 }
@@ -503,6 +518,9 @@ GM_xmlhttpRequest({
         }
     }
 });
+
+alert(oilLinksArray.length);
+	//////	from this it seems like the oil links are being read in
 
 }//end getEachNews
 
