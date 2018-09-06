@@ -236,9 +236,11 @@ Find Sara's Jan 2012 comments with "//////	"
 
 
     const HundredsRegex = /\$\d\d?d?\,\d\d\d\.?\d?\d?\b/ig;
-    const CurrencyRegex = /\$\d+\,?\d*\.?\d* ?.?i?l?l?i?o?n?\b/ig;
+    const CurrencyRegex = /\$\d+\,?\d*\.?\d* ?.?r?i?l?l?i?o?n?\b/ig;
     const MillionsRegex = /million/ig;
     const BillionsRegex = /\$\d\d?d?\.?\d?\d? billion\b/ig;
+		const TrillionsRegex = /trillion/ig;
+
 
 
     // tags to scan for currency values
@@ -278,9 +280,11 @@ Find Sara's Jan 2012 comments with "//////	"
           } else if (BillionsRegex.test(match)) {
             var type = 2;
             findAndReplace(type, match);
-
-
-          } else if (HundredsRegex.test(match)) {
+          } else if (TrillionsRegex.test(match)) {
+            var type = 3;
+            findAndReplace(type, match);
+          }
+					else if (HundredsRegex.test(match)) {
             var type = 0;
             findAndReplace(type, match);
 
@@ -318,7 +322,7 @@ Find Sara's Jan 2012 comments with "//////	"
       span.appendChild(document.createTextNode(source.substring(lastLastIndex, match.index)));
 
       //assign gallon units e.g. millions billions
-      var units = new Array(" Barrels Oil", " Million Barrels Oil", " Billion Barrels Oil");
+      var units = new Array(" Barrels Oil", " Million Barrels Oil", " Billion Barrels Oil", " Trillion Barrels Oil");
       var updownarray = new Array("data:image/gif,GIF89a%0A%00%0E%00%91%03%00%CC%88r%99%00%00%CC3%00%FF%FF%FF!%F9%04%01%00%00%03%00%2C%00%00%00%00%0A%00%0E%00%00%02%1A%9C%8F%A9%CB%0B%01%15%10%22Hj%D3%AC%97%9BM%85%1C%18f%03i~%98%93%16%00%3B", "data:image/gif,GIF89a%0A%00%0E%00%A2%00%00%00%99%00%00f%003%993%CC%FF%CC%C0%C0%C0%00%00%00%00%00%00%00%00%00!%F9%04%01%00%00%04%00%2C%00%00%00%00%0A%00%0E%00%40%03%1FH%BA%BC%03%204%F2%84l%23%E8%C9)%FC%16%F3D%5D%99M%23%10z%1Fx%B1%AF%03%C5e%02%00%3B");
       //var units = ' Gallons Crude Oil)';
 
