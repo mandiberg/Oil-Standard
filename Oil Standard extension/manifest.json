@@ -9,6 +9,7 @@
     "matches": [
       "<all_urls>"
     ],
+		"exclude_matches": ["https://docs.google.com/*", "https://drive.google.com/*"],
     "js": ["content.js"]
   }],
   "converted_from_user_script": true,
