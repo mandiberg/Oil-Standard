@@ -236,10 +236,10 @@ Find Sara's Jan 2012 comments with "//////	"
 
 
     const HundredsRegex = /\$\d\d?d?\,\d\d\d\.?\d?\d?\b/ig;
-    const CurrencyRegex = /\$\d+\,?\d*\.?\d* ?.?r?i?l?l?i?o?n?\b/ig;
+    const CurrencyRegex = /\$\d+\,?\d*\.?\d* ?.?.?i?l?l?i?o?n?\b/ig;
     const MillionsRegex = /million/ig;
     const BillionsRegex = /\$\d\d?d?\.?\d?\d? billion\b/ig;
-		const TrillionsRegex = /trillion/ig;
+    const TrillionsRegex = /trillion/ig;
 
 
 
@@ -341,6 +341,13 @@ Find Sara's Jan 2012 comments with "//////	"
       amt = amt.replace(",", "");
       var converted = parseInt(parseFloat(amt) / rate * 100) / 100; //approximation to have 2 digits after the .
       var change = parseInt(ratechange * converted * 100) / 100; //approximation to have 2 digits after the .
+      if (type == 3) {
+        if (converted < 1){
+          type = 2;
+          converted = converted*1000
+        }
+      }
+
       change += "";
       var txtchange = change.replace("0.", ".");
       var updownstyle = "updown" + updown;
