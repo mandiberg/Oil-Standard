@@ -284,7 +284,7 @@ Find Sara's Jan 2012 comments with "//////	"
             var type = 3;
             findAndReplace(type, match);
           }
-					else if (HundredsRegex.test(match)) {
+          else if (HundredsRegex.test(match)) {
             var type = 0;
             findAndReplace(type, match);
 
