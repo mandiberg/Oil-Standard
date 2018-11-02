@@ -211,12 +211,12 @@ Find Sara's Jan 2012 comments with "//////	"
     addGlobalStyle('.oillink { color: #996633 ! important; }');
     addGlobalStyle('.updown1 { color: #009900 ! important; }');
     addGlobalStyle('.updown0 { color: #CC3300 ! important; }');
-
-
+		
     addGlobalStyle('body div#toolTip { position:absolute;z-index:1000;width:220px;background:#000;border:2px double #fff;text-align:left;padding:5px;min-height:1em;-moz-border-radius:5px; }');
     addGlobalStyle('body div#toolTip p { margin:0;padding:0;color:#fff;font:11px/12px verdana,arial,sans-serif; }');
     addGlobalStyle('body div#toolTip p em { display:block;margin-top:3px;color:#f60;font-style:normal;font-weight:bold; }');
     addGlobalStyle('body div#toolTip p em span { font-weight:bold;color:#fff; }');
+
 
     getOnlyOil()
     getOilPrices();
@@ -372,8 +372,10 @@ Find Sara's Jan 2012 comments with "//////	"
       }
 
       var drop = document.createElement("img");
+			drop.setAttribute("class", "oilimage");
       drop.setAttribute("src", "data:image/gif,GIF89a%06%00%0D%00%C4%1F%00%9Bu%25%C2%AAz%B4%97%5C%8Fd%0B%C6%B0%83%B7%9Cc%C0%A9w%BF%A7u%9Cv(%E1%D6%BE%F4%F0%E7%F8%F6%F0%90f%0E%F0%EA%DF%D7%C8%A9%9As%22%E8%DF%CD%C8%B2%86%A1%7D3%BA%9Fh%B8%9De%97o%1D%CF%BC%95%98q%1F%BA%A0i%EF%E9%DC%FE%FD%FC%BB%A1l%C5%AF%81%8C%60%05%FF%FF%FF%FF%FF%FF!%F9%04%01%00%00%1F%00%2C%00%00%00%00%06%00%0D%00%00%055%E0%F7%25%99(Z%8E%F9%15%81%FAH%26%D4u%E5%87!%1D%F6-%14%D7%0D%8AHc33%14%3C%C4%CE%C5%E0%F1u%18%13%8Fc%86%20%08%003%8B%E6P%B9p4!%00%3B");
       drop.setAttribute("border", 0);
+			drop.setAttribute("style","width:inherit; vertical-align: inherit;");
       span.appendChild(drop);
 
       var a = document.createElement("a");
